@@ -1019,7 +1019,7 @@ export interface ApiDomainDomain extends Schema.CollectionType {
     cover: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     seo: Attribute.Component<'shared.seo'> &
@@ -1312,6 +1312,39 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPartnerPartner extends Schema.CollectionType {
+  collectionName: 'partners';
+  info: {
+    singularName: 'partner';
+    pluralName: 'partners';
+    displayName: 'Partner';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    web_site: Attribute.String;
+    logo: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::partner.partner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::partner.partner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductFeatureProductFeature extends Schema.CollectionType {
   collectionName: 'product_features';
   info: {
@@ -1370,6 +1403,7 @@ declare module '@strapi/types' {
       'api::hero.hero': ApiHeroHero;
       'api::lead-form-submission.lead-form-submission': ApiLeadFormSubmissionLeadFormSubmission;
       'api::page.page': ApiPagePage;
+      'api::partner.partner': ApiPartnerPartner;
       'api::product-feature.product-feature': ApiProductFeatureProductFeature;
     }
   }
