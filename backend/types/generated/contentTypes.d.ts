@@ -826,7 +826,7 @@ export interface ApiActivityActivity extends Schema.CollectionType {
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     content: Attribute.RichText &
@@ -918,7 +918,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     description: Attribute.RichText &
