@@ -884,13 +884,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
     cover: Attribute.Media<'images' | 'files' | 'videos'> &
       Attribute.Required &
@@ -923,6 +916,13 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::author.author'
     >;
     seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
