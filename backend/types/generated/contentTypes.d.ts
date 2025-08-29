@@ -820,7 +820,7 @@ export interface ApiActivityActivity extends Schema.CollectionType {
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     seo: Attribute.Component<'shared.seo'> &
